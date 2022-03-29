@@ -1,0 +1,101 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+h1{
+    padding: 0px;
+    margin: 0px;
+    line-height: 0px;
+}
+
+h2{
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+h3{
+    padding: 0px;
+    margin: 0px;
+}
+
+p{
+    margin-bottom: 1px;
+    padding: 0px;
+    margin: 10px;
+}
+
+#searchbar{
+
+    background-color: brown;
+    height: 50px;
+    padding: 22px;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 0px;
+
+}
+
+input[type=text] {
+    width: 100px;
+    transition: ease-in-out, width .35s ease-in-out;
+  }
+  
+  input[type=text]:focus {
+    width: 250px;
+  }
+
+#searchbox{
+    
+    height: 35px;
+    width: 400px;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: rgb(202, 202, 202);
+    padding-left: 15px;
+    border-width: 0px;
+
+    
+}
+#searchbutton{
+    
+    width: 35px;
+    height: 35px;
+}
+
+.mainContent{
+    width: 60%;
+    padding: 50px;
+    padding-top: 5px;
+    margin-top: 25px;
+    margin-left:25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.contentCard{
+    border-radius: 15px;
+    border-style: solid;
+    border-color: rgb(155, 155, 155);
+    border-width: 1px;
+}
+
+.mainContentHeader{
+    display: flex;
+    background-color: rgb(241, 241, 241);
+    padding: 15px;
+    
+    
+    margin: 0px;
+    border-radius: 15px;
+    overflow: auto;
+}
+
+.mainContentBody{
+    padding: 25px;
+    padding-top: 0px;
+    border-radius: 15px;
+    background-color: rgb(252, 252, 252);
+    margin-top: 0px;
+}
+
