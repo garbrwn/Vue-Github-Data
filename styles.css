@@ -1,6 +1,8 @@
 body{
     margin: 0px;
     padding: 0px;
+    overflow: hidden;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 h1{
@@ -64,12 +66,13 @@ input[type=text] {
 }
 
 .mainContent{
+    display: flex;
     width: 60%;
     padding: 50px;
     padding-top: 5px;
     margin-top: 25px;
     margin-left:25px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
 
 }
 
@@ -80,10 +83,11 @@ input[type=text] {
     border-width: 1px;
 }
 
-.mainContentHeader{
+#mainContentHeader{
     display: flex;
     background-color: rgb(241, 241, 241);
     padding: 15px;
+    position: relative;
     
     
     margin: 0px;
@@ -98,4 +102,44 @@ input[type=text] {
     background-color: rgb(252, 252, 252);
     margin-top: 0px;
 }
+
+#favMenu{
+    background-color: red;
+    width: 300px;
+    height:100%;
+    position: absolute;
+    right:0;
+    top:94;
+    overflow: hidden;
+}
+
+.red{
+    background-color: red;
+}
+
+.favs-light{
+    background-color: rgb(255, 75, 75);
+}
+
+.favs-light:hover{
+    background-color:rgb(252, 99, 99);
+}
+
+.favs-dark{
+    background-color: rgb(173, 9, 9);
+}
+
+.favs-dark:hover{
+    background-color:rgb(202, 11, 11);
+}
+
+.disable-select {
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+
 

@@ -2,55 +2,91 @@
     <head>
         <meta charset="utf-8">
         <title>Github User Request</title>
+
         <link href="styles.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+        <script src="https://kit.fontawesome.com/6c19d31c2b.js" crossorigin="anonymous"></script>
+
     </head>
 
     <body>
         <div id="vue-app">
+
+            <!-- Search Bar ////////////////////////////////////////////////// -->
+            
             <div id="searchbar">
                 <input id="searchbox" v-model="usernameInput"  v-on:keyup.enter="getJSON()">
                 
                 <p v-if="badUserRequest" style="color: cdcdcd; margin-top: 5px;">This username was not found, please try again.</p>
             </div>
 
-            <div class="mainContent" v-if="userData === null">
-                <h1>welcome!</h1>
-                <p>Please enter a username and we will request their profile information from github.</p>
             
-            </div>
-
-            <div class="mainContent" v-if="userData != null">
+                <!-- Pre-Search Content////////////////////////////////////////////////// -->
                 
-                <div class="contentCard">
-                    <div class="mainContentHeader">
-                        <img :src="userData.avatar_url" width="50px" height="50px">
-                        <h2>{{userData.login}}</h2>                      
-                        
-                    </div>
-
-                    <div class="mainContentBody">
-                        <p v-if="userData.bio !=''" >{{userData.bio}}</p>
-                        <p>Profile: <a :href="userData.html_url">{{userData.html_url}}</a></p>
-
-                        <p>
-                        Public Repos: {{userData.public_repos}} Public Gists: {{userData.public_gists}}
-                        </p>
-                        <p>
-                            Followers: {{userData.followers}} Following: {{userData.following}}
-                        </p>
-
-                        <p>Profile Created: 
-                            {{new Date(userData.created_at).toLocaleDateString() }}
-                        </p>
-
-                        
-                        <p>Profile Updated: 
-                            {{new Date(userData.updated_at).toLocaleDateString() }}
-                        </p>
-                    </div>         
+                <div class="mainContent" v-if="userData === null">
+                    <h1>welcome!</h1>
+                    <p>Please enter a username and we will request their profile information from github.</p>
+                
                 </div>
+
+                <!-- Post-Search Content////////////////////////////////////////////////// -->
+
+                <div class="mainContent" v-if="userData != null">
+                    
+                    <div class="contentCard">
+                        <div id="mainContentHeader" v-on:click="addFav" class="disable-select">
+                            <img v-bind:src="userData.avatar_url" width="50px" height="50px">
+                            <h2>{{userData.login}}</h2>       
+                            
+
+                            <i v-if="!favourited" class="fa-regular fa-star" style="position: absolute; top:15; right:15"></i>
+                            <i v-if="favourited" class="fa-solid fa-star" style="position: absolute; top:15; right:15"></i>
+
+                            
+                            
+                        </div>
+
+                        <div class="mainContentBody">
+                            <p v-if="userData.bio !=''" >{{userData.bio}}</p>
+                            <p>Profile: <a :href="userData.html_url">{{userData.html_url}}</a></p>
+
+                            <p>
+                            Public Repos: {{userData.public_repos}} Public Gists: {{userData.public_gists}}
+                            </p>
+                            <p>
+                                Followers: {{userData.followers}} Following: {{userData.following}}
+                            </p>
+
+                            <p>Profile Created: 
+                                {{new Date(userData.created_at).toLocaleDateString() }}
+                            </p>
+
+                            
+                            <p>Profile Updated: 
+                                {{new Date(userData.updated_at).toLocaleDateString() }}
+                            </p>
+                        </div>         
+                    </div>
+                </div>
+
+                
+            
+
+                <!-- Favs ///////////////////////////////////////////////////// -->
+                
+                    <div v-if="savedFavs != null && savedFavs.length > 0" id="favMenu" class="disable-select">
+                        <div v-for="(item, index) in savedFavs">
+                            <div style="padding: 25px;" v-bind:class="index % 2 ? 'favs-dark' : 'favs-light'" v-on:click="changeUserByClick(index)">
+                            {{item}}
+                        </div>
+                        </div>
+                    </div>
+                
+
+                
+
             </div>
+
         </div>
 
         <script src="app.js"></script>
